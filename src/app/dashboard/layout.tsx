@@ -1,55 +1,11 @@
 "use client";
-import { useState, useEffect, createContext } from "react";
-import type { Dispatch, SetStateAction } from "react";
+import { useState, useEffect,  } from "react";
+
 import Sidebar from "./components/Sidebar";
 import AddTask from "./components/AddTask";
 import { getTask } from "../service/task-service";
+import { DataContext } from "./Context/Context";
 
-interface UserTaskObjType {
-  createdAt: string,
-  description: string,
-  priority: string,
-  status: string,
-  title: string,
-  uid: string,
-  updatedAt: string,
-  deadline: string,
-  _v: number,
-  _id: string
-}
-
-interface EditTaskObjType {
-  id: string,
-  description: string,
-  priority: string,
-  status: string,
-  title: string,
-  deadline: string,
-}
-
-interface ContextType {
-  addTaskbarToggle: boolean;
-  username: string,
-  userTasks: UserTaskObjType[] | null,
-  editTask: EditTaskObjType | null,
-  setAddTaskbarToggle: Dispatch<SetStateAction<boolean>>;
-  setUsername: Dispatch<SetStateAction<string>>;
-  setUserTasks: Dispatch<SetStateAction<null>>;
-  setEditTask: Dispatch<SetStateAction<null>>;
-}
-
-const contextObj = {
-  addTaskbarToggle: false,
-  username: "",
-  userTasks: null,
-  editTask: null,
-  setAddTaskbarToggle: () => {},
-  setUsername: () => {},
-  setUserTasks: () => {},
-  setEditTask: () => {}
-};
-
-export const DataContext = createContext<ContextType>(contextObj);
 
 export default function RootLayout({
   children,

@@ -4,11 +4,11 @@ import { useContext } from "react";
 import Features from "./components/Features";
 import Functionality from "./components/Functionality";
 import TaskGrid from "./components/TaskGrid";
-import { Context } from "./layout";
+import { DataContext } from "./Context/Context";
 
 
 export default function DashboardPage() {
-    const { username } = useContext(Context);
+    const { username } = useContext(DataContext);
     
     return (
         <div className="max-h-screen flex flex-col space-y-4 overflow-y-scroll no-scrollbar">
