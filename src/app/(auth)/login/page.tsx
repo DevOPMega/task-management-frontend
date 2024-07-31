@@ -48,7 +48,7 @@ export default function LoginPage() {
         </button>
       </form>
       <p className="mt-4 text-center text-gray-400">
-        Don't have an account? Create a {' '}
+        Don{`'`}t have an account? Create a {' '}
         <Link href="/signin" className="text-blue-600">
           new account.
         </Link>

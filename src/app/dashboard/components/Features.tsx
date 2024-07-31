@@ -53,7 +53,7 @@ function Features() {
             Access Anywhere
           </h1>
           <p className="text-gray-500 text-xs">
-            Sync your notes across all devices. Stay productive whether you're
+            Sync your notes across all devices. Stay productive whether you{`'`}re
             on your phone, tablet, or computer.
           </p>
         </div>

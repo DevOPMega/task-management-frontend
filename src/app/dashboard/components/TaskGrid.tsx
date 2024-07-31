@@ -17,9 +17,10 @@ function TaskGrid() {
         <h3 className="text-gray-600">To do</h3>
         <div className="mt-4 flex flex-col space-y-2">
           {userTasks?.map(
-            (task) =>
+            (task, i) =>
               task.status === "To Do" && (
                 <div
+                  key={i}
                   className="bg-violet-200 px-2 py-2 flex flex-col space-y-2 rounded-md cursor-pointer"
                   onClick={() => {
                     handleTaskEditClick({
@@ -55,9 +56,10 @@ function TaskGrid() {
         <h3 className="text-gray-600">In progress</h3>
         <div className="mt-4 flex flex-col space-y-2">
           {userTasks?.map(
-            (task) =>
+            (task, i) =>
               task.status === "In Progress" && (
                 <div
+                  key={i}
                   className="bg-violet-200 px-2 py-2 flex flex-col space-y-2 rounded-md cursor-pointer"
                   onClick={() => {
                     handleTaskEditClick({
@@ -93,9 +95,10 @@ function TaskGrid() {
         <h3 className="text-gray-600">Under review</h3>
         <div className="mt-4 flex flex-col space-y-2">
           {userTasks?.map(
-            (task) =>
+            (task, i) =>
               task.status === "Under Review" && (
                 <div
+                  key={i}
                   className="bg-violet-200 px-2 py-2 flex flex-col space-y-2 rounded-md cursor-pointer"
                   onClick={() => {
                     handleTaskEditClick({
@@ -131,9 +134,10 @@ function TaskGrid() {
         <h3 className="text-gray-600">Finished</h3>
         <div className="mt-4 flex flex-col space-y-2">
           {userTasks?.map(
-            (task) =>
+            (task, i) =>
               task.status === "Completed" && (
                 <div
+                  key={i}
                   className="bg-violet-200 px-2 py-2 flex flex-col space-y-2 rounded-md cursor-pointer"
                   onClick={() => {
                     handleTaskEditClick({
