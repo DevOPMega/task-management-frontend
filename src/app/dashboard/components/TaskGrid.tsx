@@ -1,10 +1,10 @@
 "use client";
 import { useContext } from "react";
-import { Context } from "../layout";
+import { DataContext } from "../layout";
 
 function TaskGrid() {
   const { userTasks, editTask, setAddTaskbarToggle, setEditTask } =
-    useContext(Context);
+    useContext(DataContext);
 
   const handleTaskEditClick = (taskObj: any) => {
     setAddTaskbarToggle(true);

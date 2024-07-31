@@ -1,11 +1,11 @@
 "use client"
 import { useContext } from "react";
-import { Context } from "../layout";
+import { DataContext } from "../layout";
 import { AddSVG, AutomationSVG, CalendarSVG, FilterSVG, ShareSVG } from "./SVG";
 import SearchButton from "./SearchButton";
 
 function Functionality() {
-  const { setAddTaskbarToggle } = useContext(Context);
+  const { setAddTaskbarToggle } = useContext(DataContext);
   return (
     <div className="flex justify-between">
       <SearchButton />

@@ -49,7 +49,7 @@ const contextObj = {
   setEditTask: () => {}
 };
 
-export const Context = createContext<ContextType>(contextObj);
+export const DataContext = createContext<ContextType>(contextObj);
 
 export default function RootLayout({
   children,
@@ -73,7 +73,7 @@ export default function RootLayout({
   }, [addTaskbarToggle]);
 
   return (
-    <Context.Provider
+    <DataContext.Provider
       value={{
         addTaskbarToggle,
         username,
@@ -92,6 +92,6 @@ export default function RootLayout({
           <AddTask />
         </div>
       </div>
-    </Context.Provider>
+    </DataContext.Provider>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { Context } from "../layout";
+import { DataContext } from "../layout";
 import {
   CalendarSVG,
   CloseSVG,
@@ -16,7 +16,7 @@ import { addTask, updateTask } from "@/app/service/task-service";
 
 function AddTask() {
   const { addTaskbarToggle, editTask, setAddTaskbarToggle, setEditTask } =
-    useContext(Context);
+    useContext(DataContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("To Do");

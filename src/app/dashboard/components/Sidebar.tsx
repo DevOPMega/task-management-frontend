@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { Context } from "../layout";
+import { DataContext } from "../layout";
 import { AddSVG, 
     AnalyticsSVG, 
     BoardsSVG, 
@@ -15,7 +15,7 @@ import { AddSVG,
 import Link from "next/link"
 
 export default function Sidebar() {
-    const { username, setAddTaskbarToggle } = useContext(Context);
+    const { username, setAddTaskbarToggle } = useContext(DataContext);
     return (
         <div className="hidden w-60 h-screen bg-white px-4 py-6 md:block">
             <div className="flex items-center space-x-2">
