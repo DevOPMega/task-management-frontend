@@ -12,7 +12,7 @@ import {
   ShareSVG,
   StatusSVG,
 } from "./SVG";
-import { addTask, updateTask } from "@/app/service/task-service";
+import { addTask, updateTask } from "@/app/dashboard/action";
 
 function AddTask() {
   const { addTaskbarToggle, editTask, setAddTaskbarToggle, setEditTask } =

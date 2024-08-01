@@ -15,12 +15,12 @@ import { AddSVG,
 import Link from "next/link"
 
 export default function Sidebar() {
-    const { username, setAddTaskbarToggle } = useContext(DataContext);
+    const { user, setAddTaskbarToggle } = useContext(DataContext);
     return (
         <div className="hidden w-60 h-screen bg-white px-4 py-6 md:block">
             <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 rounded-full bg-gray-800"></div>
-                <p className="text-lg font-semibold">{username}</p>
+                <p className="text-lg font-semibold">{user}</p>
             </div>
             <div className="flex justify-between items-center mt-4">
                 <div className="flex space-x-3">

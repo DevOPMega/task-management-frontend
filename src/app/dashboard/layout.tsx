@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 
 import Sidebar from "./components/Sidebar";
 import AddTask from "./components/AddTask";
-import { getTask } from "../service/task-service";
+// import { getTask } from "../service/task-service";
 import { DataContext } from "./Context/Context";
+import { getTask } from "./action";
 
 export default function RootLayout({
   children,
@@ -12,17 +13,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [addTaskbarToggle, setAddTaskbarToggle] = useState(false);
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
   const [userTasks, setUserTasks] = useState(null);
   const [editTask, setEditTask] = useState(null);
 
   useEffect(() => {
     const getUserTask = async () => {
       // get the user task
-      const { username, userTasks } = await getTask();
-      if (username || userTasks) {
-        console.log("Username: ",username);
-        setUsername(username.name);
+      const { userName, userTasks } = await getTask();
+      if (userName || userTasks) {
+        console.log("Username: ",userName);
+        setUser(userName.name);
         setUserTasks(userTasks);
       }
     };
@@ -33,11 +34,11 @@ export default function RootLayout({
     <DataContext.Provider
       value={{
         addTaskbarToggle,
-        username,
+        user,
         userTasks,
         editTask,
         setAddTaskbarToggle,
-        setUsername,
+        setUser,
         setUserTasks,
         setEditTask,
       }}

@@ -8,12 +8,12 @@ import { DataContext } from "./Context/Context";
 
 
 export default function DashboardPage() {
-    const { username } = useContext(DataContext);
+    const { user } = useContext(DataContext);
     
     return (
         <div className="max-h-screen flex flex-col space-y-4 overflow-y-scroll no-scrollbar">
             <h1 className="font-semibold text-4xl">
-                Good morning, {username}!
+                Good morning, {user}!
             </h1>
             <Features />
             <Functionality />
