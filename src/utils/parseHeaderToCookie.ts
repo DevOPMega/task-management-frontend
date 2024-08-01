@@ -6,10 +6,12 @@ const parseHeaderToCookie = (cookie: string) => {
         let nameValue = pairs[i].split("=");
         cookies[nameValue[0].trim()] = nameValue[1];
     }   
+    console.log(cookies);
     const cookieObject: any = {};
     cookieObject.name = "access_token";
     cookieObject.value = cookies["access_token"];
     cookieObject.httpOnly = true;
+    cookieObject.domain=process.env.API_URI,
     cookieObject.maxAge = Number(cookies["Max-Age"]);
     cookieObject.expires = cookies["Expires"];
     cookieObject.sameSite = cookies["SameSite"];
