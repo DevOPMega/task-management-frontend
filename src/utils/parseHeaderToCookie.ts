@@ -14,6 +14,7 @@ const parseHeaderToCookie = (cookie: string) => {
     cookieObject.maxAge = Number(cookies["Max-Age"]);
     cookieObject.expires = cookies["Expires"];
     cookieObject.sameSite = cookies["SameSite"];
+    cookieObject.secure = true;
 
     return cookieObject;
 }

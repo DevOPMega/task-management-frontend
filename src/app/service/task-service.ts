@@ -1,7 +1,6 @@
 const url = process.env.NEXT_PUBLIC_API_URI_TASK || "";
 
 export async function getTask() {
-  console.log("url",url);
   try {
     const response = await fetch(url, {
       headers: {
@@ -9,9 +8,11 @@ export async function getTask() {
       },
       credentials: "include",
     });
-    const parseResponse = await response.json();
-    console.log(response);
-    return parseResponse;
+    if (response.status !== 200) {
+      console.log("Error in fetch task ", response.json());
+      return;
+    }
+    return response.json();
   } catch (e) {
     console.error("Task Service Error", e);
   }
@@ -27,6 +28,10 @@ export async function addTask(task: any) {
       credentials: "include",
       body: JSON.stringify(task),
     });
+    if (response.status !== 201) {
+      console.log("Error in Add task ", response.json());
+      return;
+    }
     return response.json();
   } catch (e) {
     console.error(e);
@@ -43,6 +48,10 @@ export async function updateTask(id: string, task: any) {
       credentials: "include",
       body: JSON.stringify({ id, ...task }),
     });
+    if (response.status !== 201) {
+      console.log("Error in update task ", response.json());
+      return;
+    }
     return response.json();
   } catch (e) {
     console.error(e);

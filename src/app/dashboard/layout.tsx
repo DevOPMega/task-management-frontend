@@ -1,11 +1,10 @@
 "use client";
-import { useState, useEffect,  } from "react";
+import { useState, useEffect } from "react";
 
 import Sidebar from "./components/Sidebar";
 import AddTask from "./components/AddTask";
 import { getTask } from "../service/task-service";
 import { DataContext } from "./Context/Context";
-
 
 export default function RootLayout({
   children,
@@ -20,11 +19,13 @@ export default function RootLayout({
   useEffect(() => {
     const getUserTask = async () => {
       // get the user task
-      const {username, userTasks } = await getTask();
-      console.log(username, userTasks)
-      setUsername(username.name);
-      setUserTasks(userTasks)
-    }
+      const { username, userTasks } = await getTask();
+      if (username || userTasks) {
+        console.log("Username: ",username);
+        setUsername(username.name);
+        setUserTasks(userTasks);
+      }
+    };
     getUserTask();
   }, [addTaskbarToggle]);
 
@@ -38,7 +39,7 @@ export default function RootLayout({
         setAddTaskbarToggle,
         setUsername,
         setUserTasks,
-        setEditTask
+        setEditTask,
       }}
     >
       <div className="flex flex-row justify-start">
