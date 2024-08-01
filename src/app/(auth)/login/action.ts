@@ -46,6 +46,6 @@ export async function loginAction(prevState: any, formData: FormData) {
       cookies().set(cookieObject);
     }
   }
-
+  console.log(cookies().get("access_token"));
   redirect("/dashboard")
 }
