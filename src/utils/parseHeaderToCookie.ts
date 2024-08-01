@@ -11,7 +11,7 @@ const parseHeaderToCookie = (cookie: string) => {
     cookieObject.name = "access_token";
     cookieObject.value = cookies["access_token"];
     cookieObject.httpOnly = true;
-    cookieObject.domain=process.env.API_URI,
+    cookieObject.domain=process.env.NEXT_PUBLIC_API_HOST;
     cookieObject.maxAge = Number(cookies["Max-Age"]);
     cookieObject.expires = cookies["Expires"];
     cookieObject.sameSite = cookies["SameSite"];
