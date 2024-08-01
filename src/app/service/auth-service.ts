@@ -30,7 +30,7 @@ export async function registerUserService(userdata: registerUserProps){
 
 export async function loginUserService(userdata: loginUserProps){
     const url = process.env.API_URI_LOGIN || "";
-
+    console.log("login url,", url);
     try {
         const response = await fetch(url, {
             method: "POST",

@@ -1,17 +1,20 @@
-const url = process.env.API_URI_TASK || "";
+const url = process.env.NEXT_PUBLIC_API_URI_TASK || "";
+
 export async function getTask() {
-    try {
-        const response = await fetch(url, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        });
-        const parseResponse = await response.json();
-        return parseResponse;
-    } catch (e) {
-        console.error("Task Service Error",e);
-    }
+  console.log("url",url);
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const parseResponse = await response.json();
+    console.log(response);
+    return parseResponse;
+  } catch (e) {
+    console.error("Task Service Error", e);
+  }
 }
 
 export async function addTask(task: any) {
@@ -22,7 +25,7 @@ export async function addTask(task: any) {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify(task)
+      body: JSON.stringify(task),
     });
     return response.json();
   } catch (e) {
@@ -38,7 +41,7 @@ export async function updateTask(id: string, task: any) {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({id, ...task})
+      body: JSON.stringify({ id, ...task }),
     });
     return response.json();
   } catch (e) {
