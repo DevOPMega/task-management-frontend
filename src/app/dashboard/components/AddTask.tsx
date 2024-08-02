@@ -12,7 +12,9 @@ import {
   ShareSVG,
   StatusSVG,
 } from "./SVG";
-import { addTask, updateTask } from "@/app/dashboard/action";
+// import { addTask, updateTask } from "@/app/dashboard/action";
+import { updateTask, addTask } from "@/app/service/task-service";
+
 
 function AddTask() {
   const { addTaskbarToggle, editTask, setAddTaskbarToggle, setEditTask } =
@@ -33,7 +35,6 @@ function AddTask() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setAddTaskbarToggle(false);
     // collect data
     const formData = new FormData(e.currentTarget);
     const task = {
@@ -43,18 +44,26 @@ function AddTask() {
       priority: formData.get("priority"),
       deadline: formData.get("deadline"),
     };
-    if (editTask) {
-      setEditTask(() => null);
+    if (editTask) {      
       setTitle("");
       setDescription("");
       setPriority("Low");
       setStatus("To Do");
 
       const response = await updateTask(editTask.id, task);
+      if (!response.status) {
+        console.log(response.error);
+        return;
+      }
+      setEditTask(() => null);
+      console.log("Task Added Successfully");
     } else {
       const response = await addTask(task);
-      console.log(response);
+      if (!response.status) {
+        console.log(response.error);
+      }
     }
+    setAddTaskbarToggle(false);
   };
 
   return (

@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 
 import Sidebar from "./components/Sidebar";
 import AddTask from "./components/AddTask";
-// import { getTask } from "../service/task-service";
 import { DataContext } from "./Context/Context";
-import { getTask } from "./action";
+import { getTask } from "../service/task-service";
 
 export default function RootLayout({
   children,
@@ -20,12 +19,14 @@ export default function RootLayout({
   useEffect(() => {
     const getUserTask = async () => {
       // get the user task
-      const { userName, userTasks } = await getTask();
-      if (userName || userTasks) {
-        console.log("Username: ",userName);
-        setUser(userName.name);
-        setUserTasks(userTasks);
+      const response = await getTask();
+      if (!response.status) {
+        console.log(response.error);
+        return;
       }
+      const data = await response.data;
+      setUser(data.user.name);
+      setUserTasks(data.userTasks);
     };
     getUserTask();
   }, [addTaskbarToggle]);
